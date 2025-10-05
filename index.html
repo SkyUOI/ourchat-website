@@ -13,6 +13,7 @@
     <div class="nav_bar" id="navBar">
         <a><img src="resources/images/logo.png" alt="Ourchat Logo" class="logo" /></a>
         <div class="nav_buttons">
+            <button id="language-switcher" class="nav_button language-switcher">中文</button>
             <a href="https://ourchat.rtfd.io/"><span class="iconfont nav_button">&#xe520;</span></a>
             <a href="https://github.com/SkyUOI/OurChat"><span class="iconfont nav_button">&#xe885;</span></a>
         </div>
@@ -29,17 +30,17 @@
                 <img class="hero_logo" src="resources/images/green.png" alt="Ourchat Icon" />
             </div>
 
-            <h1 class="hero_title">连接每一个重要时刻</h1>
-            <p class="hero_subtitle">Ourchat是一款安全、高效的即时通讯应用，让您与亲朋好友保持联系，分享生活中的每一个精彩瞬间。</p>
+            <h1 class="hero_title" data-i18n="hero.title">连接每一个重要时刻</h1>
+            <p class="hero_subtitle" data-i18n="hero.subtitle">Ourchat是一款安全、高效的即时通讯应用，让您与亲朋好友保持联系，分享生活中的每一个精彩瞬间。</p>
 
             <div class="hero_buttons">
-                <a href="https://ourchat.rtfd.io/"><button class="white_button">查看文档<span
+                <a href="https://ourchat.rtfd.io/"><button class="white_button" data-i18n="hero.docs">查看文档<span
                             class="iconfont">&#xe520;</span></button></a>
                 <div class="download_dropdown">
-                    <button class="green_button">立即下载<span class="iconfont">&#xe606;</span></button>
+                    <button class="green_button" data-i18n="hero.download">立即下载<span class="iconfont">&#xe606;</span></button>
                     <div class="dropdown_content">
-                        <a href="https://github.com/SkyUOI/OurChat/releases" target="_blank">Github下载</a>
-                        <a href="https://gitee.com/SkyUOI/OurChat/releases" target="_blank">Gitee下载</a>
+                        <a href="https://github.com/SkyUOI/OurChat/releases" target="_blank" data-i18n="hero.github">Github下载</a>
+                        <a href="https://gitee.com/SkyUOI/OurChat/releases" target="_blank" data-i18n="hero.gitee">Gitee下载</a>
                     </div>
                 </div>
             </div>
@@ -50,7 +51,7 @@
 
     <div class="container">
         <section class="developers_section">
-            <h2 class="section_title">主要开发者</h2>
+            <h2 class="section_title" data-i18n="developers.title">主要开发者</h2>
             <div class="main_developers">
                 <!-- 开发者1 -->
                 <div class="developer_card">
@@ -58,10 +59,10 @@
                         <img src="https://avatars.githubusercontent.com/u/97649454?v=4" alt="Limuy"
                             class="developer_avatar">
                         <h3 class="developer_name">Limuy</h3>
-                        <p class="developer_role">服务端开发</p>
+                        <p class="developer_role" data-i18n="developer.limuy.role">服务端开发</p>
                     </div>
                     <div class="card_body">
-                        <p class="developer_bio">服务端主要开发者</p>
+                        <p class="developer_bio" data-i18n="developer.limuy.bio">服务端主要开发者</p>
                         <div class="developer_skills">
                             <span class="skill_tag">Rust</span>
                             <span class="skill_tag">Redis</span>
@@ -78,10 +79,10 @@
                         <img src="https://avatars.githubusercontent.com/u/150120115?v=4" alt="OMO"
                             class="developer_avatar">
                         <h3 class="developer_name">OMO</h3>
-                        <p class="developer_role">服务端开发</p>
+                        <p class="developer_role" data-i18n="developer.omo.role">服务端开发</p>
                     </div>
                     <div class="card_body">
-                        <p class="developer_bio">主要负责信息加密等内容开发</p>
+                        <p class="developer_bio" data-i18n="developer.omo.bio">主要负责信息加密等内容开发</p>
                         <div class="developer_skills">
                             <span class="skill_tag">Rust</span>
                             <span class="skill_tag">E2EE</span>
@@ -98,10 +99,10 @@
                         <img src="https://avatars.githubusercontent.com/u/78007298?v=4" alt="Senlinjun"
                             class="developer_avatar">
                         <h3 class="developer_name">senlinjun</h3>
-                        <p class="developer_role">客户端开发</p>
+                        <p class="developer_role" data-i18n="developer.senlinjun.role">客户端开发</p>
                     </div>
                     <div class="card_body">
-                        <p class="developer_bio">负责Ourchat客户端开发</p>
+                        <p class="developer_bio" data-i18n="developer.senlinjun.bio">负责Ourchat客户端开发</p>
                         <div class="developer_skills">
                             <span class="skill_tag">Flutter</span>
                             <span class="skill_tag">Dart</span>
@@ -183,10 +184,11 @@
         <footer class="footer">
             <div class="container">
                 <img src="resources/images/logo.png" alt="Ourchat Logo" height="40">
-                <p class="footer_text">© 2025 Ourchat - 连接每一个重要时刻</p>
+                <p class="footer_text" data-i18n="footer.text">© 2025 Ourchat - 连接每一个重要时刻</p>
             </div>
         </footer>
 
+        <script src="translations.js"></script>
         <script>
             // 导航栏滚动效果
             window.addEventListener('scroll', function () {
@@ -195,6 +197,18 @@
                     navBar.classList.add('scrolled');
                 } else {
                     navBar.classList.remove('scrolled');
+                }
+            });
+
+            // Language switcher event listener
+            document.addEventListener('DOMContentLoaded', function() {
+                const langButton = document.getElementById('language-switcher');
+                if (langButton) {
+                    langButton.addEventListener('click', function() {
+                        const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+                        const newLang = currentLang === 'en' ? 'zh' : 'en';
+                        setLanguage(newLang);
+                    });
                 }
             });
         </script>

@@ -102,6 +102,31 @@ body {
     background-color: rgba(124, 58, 237, 0.1);
 }
 
+/* Language switcher styles */
+.language-switcher {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: var(--transition);
+    width: auto;
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    border: 2px solid transparent;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+}
+
+.language-switcher:hover {
+    color: var(--primary-color);
+    background-color: rgba(124, 58, 237, 0.1);
+    border-color: var(--primary-color);
+}
+
 /* 主内容区样式 */
 .hero_section {
     min-height: 100vh;
