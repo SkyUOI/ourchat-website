@@ -6,6 +6,7 @@ import i18n, { setLanguage } from './i18n'
 
 // Set initial HTML lang attribute
 const savedLanguage = localStorage.getItem('preferredLanguage') || 'en'
-setLanguage(savedLanguage)
+const lang = savedLanguage === 'zh' ? 'zh' : 'en'
+setLanguage(lang)
 
 createApp(App).use(router).use(i18n).mount('#app')

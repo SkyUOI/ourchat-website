@@ -1,6 +1,8 @@
 <template>
   <div class="nav_bar" :class="{ scrolled: isScrolled }" id="navBar">
-    <a><img src="/resources/images/logo.png" alt="Ourchat Logo" class="logo" /></a>
+    <a
+      ><img src="/resources/images/logo.png" alt="OurChat Logo" class="logo"
+    /></a>
     <div class="nav_buttons">
       <button
         v-if="showLanguageSwitcher"
@@ -20,45 +22,44 @@
   </div>
 </template>
 
-<script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { setLanguage } from '../i18n'
+<script setup lang="ts">
+import { ref, computed, onMounted, onUnmounted } from "vue";
+import { useI18n } from "vue-i18n";
+import { setLanguage } from "../i18n";
 
-const props = defineProps({
-  showLanguageSwitcher: {
-    type: Boolean,
-    default: true
-  }
-})
+const props = withDefaults(defineProps<{
+  showLanguageSwitcher?: boolean
+}>(), {
+  showLanguageSwitcher: true,
+});
 
-const { locale } = useI18n()
-const isScrolled = ref(false)
+const { locale } = useI18n();
+const isScrolled = ref(false);
 
-const toggleLanguage = () => {
-  const newLang = locale.value === 'en' ? 'zh' : 'en'
-  setLanguage(newLang)
-}
+const toggleLanguage = (): void => {
+  const newLang = locale.value === "en" ? "zh" : "en";
+  setLanguage(newLang);
+};
 
 const languageButtonText = computed(() => {
-  return locale.value === 'en' ? '中文' : 'English'
-})
+  return locale.value === "en" ? "中文" : "English";
+});
 
-const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50
-}
+const handleScroll = (): void => {
+  isScrolled.value = window.scrollY > 50;
+};
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
+  window.addEventListener("scroll", handleScroll);
   // Initial check
-  handleScroll()
-})
+  handleScroll();
+});
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+  window.removeEventListener("scroll", handleScroll);
+});
 </script>
 
 <style scoped>
-/* Navbar styles are already in global style.css */
+
 </style>

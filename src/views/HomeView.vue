@@ -18,16 +18,18 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+// @ts-ignore
 import Navbar from '../components/Navbar.vue'
 import Hero from '../components/Hero.vue'
 import DeveloperCard from '../components/DeveloperCard.vue'
 import Footer from '../components/Footer.vue'
+import type { Developer } from '../components/DeveloperCard.vue'
 
 const { t } = useI18n()
 
-const developers = [
+const developers: Developer[] = [
   {
     name: 'Limuy',
     avatar: 'https://avatars.githubusercontent.com/u/97649454?v=4',
@@ -74,5 +76,5 @@ const developers = [
 </script>
 
 <style scoped>
-/* Additional styles if needed */
+
 </style>

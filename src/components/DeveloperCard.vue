@@ -27,25 +27,40 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const props = defineProps({
-  developer: {
-    type: Object,
-    required: true,
-    default: () => ({
-      name: '',
-      avatar: '',
-      role: '',
-      bio: '',
-      roleKey: '',
-      bioKey: '',
-      skills: [],
-      socialLinks: []
-    })
-  }
+export interface SocialLink {
+  platform: string
+  url: string
+  iconClass: string
+}
+
+export interface Developer {
+  name: string
+  avatar: string
+  role?: string
+  bio?: string
+  roleKey: string
+  bioKey: string
+  skills: string[]
+  socialLinks: SocialLink[]
+}
+
+const props = withDefaults(defineProps<{
+  developer: Developer
+}>(), {
+  developer: () => ({
+    name: '',
+    avatar: '',
+    role: '',
+    bio: '',
+    roleKey: '',
+    bioKey: '',
+    skills: [],
+    socialLinks: []
+  })
 })
 
 const { t } = useI18n()
@@ -60,5 +75,5 @@ const bioText = computed(() => {
 </script>
 
 <style scoped>
-/* Styles are already in global style.css */
+
 </style>
