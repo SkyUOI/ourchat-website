@@ -32,6 +32,12 @@
             <span class="iconfont">&#xe520;</span>
           </button>
         </a>
+        <a href="https://ocapp.skyuoi.org" target="_blank">
+          <button class="white_button">
+            {{ t("hero.webClient") }}
+            <span class="iconfont">&#xe601;</span>
+          </button>
+        </a>
         <div class="download_dropdown">
           <button class="green_button">
             {{ t("hero.download") }}

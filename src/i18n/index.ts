@@ -12,6 +12,7 @@ const messages = {
     "hero.subtitle":
       "OurChat is a secure, efficient instant messaging app that keeps you connected with friends and family, sharing every wonderful moment in life.",
     "hero.docs": "View Documentation",
+    "hero.webClient": "Try Web Client",
     "hero.download": "Download Now",
     "hero.github": "Download from GitHub",
     "hero.gitee": "Download from Gitee",
@@ -38,6 +39,7 @@ const messages = {
     "hero.subtitle":
       "OurChat是一款安全、高效的即时通讯应用，让您与亲朋好友保持联系，分享生活中的每一个精彩瞬间。",
     "hero.docs": "查看文档",
+    "hero.webClient": "体验网页版",
     "hero.download": "立即下载",
     "hero.github": "Github下载",
     "hero.gitee": "Gitee下载",
